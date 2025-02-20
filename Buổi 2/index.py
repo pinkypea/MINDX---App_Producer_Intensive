@@ -66,3 +66,28 @@ class HINHTAMGIAC:
             print("Tam giác có tồn tại")
         else:
             print("Tam giác không tồn tại")
+
+# Khởi tạo giao diện bằng thư viện PyQt6
+from PyQt6.QtWidgets import QApplication, QMainWindow
+import sys
+
+app = QApplication(sys.argv)
+window = QMainWindow()
+window.show()
+app.exec()
+
+# Khởi tạo giao diện bằng thư viện PyQt6 và QtDesigner
+from PyQt6.QtWidgets import QApplication, QMainWindow
+import sys
+from PyQt6 import uic
+
+class Test(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("index.ui", self)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    test = Test()
+    test.show()
+    app.exec()
