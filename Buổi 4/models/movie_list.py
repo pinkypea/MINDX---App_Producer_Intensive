@@ -58,4 +58,3 @@ for movie in result_movie:
     print(movie.title)
 
 movie_list.update_movie("001", "010", "Avengers", "27/04/2012")
-
