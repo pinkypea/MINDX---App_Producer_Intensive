@@ -27,6 +27,28 @@ class MovieList:
                 return True
         return False
     
+    def sort_movies(self, key="title", reverse=False):
+        """Sắp xếp phim theo tiêu chí: title, rating hoặc release_date."""
+        if key == "title":
+            self.movie_list.sort(key=self.get_title, reverse=reverse)
+        elif key == "rating":
+            self.movie_list.sort(key=self.get_rating, reverse=reverse)
+        elif key == "release_date":
+            self.movie_list.sort(key=self.get_release_date, reverse=reverse)
+
+    def get_title(self, movie):
+        """Trả về tên phim (viết thường để sắp xếp không phân biệt chữ hoa)."""
+        return movie.title.lower()
+
+    def get_rating(self, movie):
+        """Trả về điểm rating."""
+        return movie.rating
+
+    def get_release_date(self, movie):
+        """Chuyển ngày tháng từ chuỗi sang dạng (năm, tháng, ngày) để sắp xếp chính xác."""
+        day, month, year = map(int, movie.release_date.split("/"))
+        return (year, month, day)
+    
     def display_movie(self):
         for movie in self.movie_list:
             print(f"{movie.id} - {movie.title} - {movie.release_date} - {movie.rating}")
@@ -57,4 +79,17 @@ print("\nKẾT QUẢ TÌM KIẾM PHIM")
 for movie in result_movie:
     print(movie.title)
 
-movie_list.update_movie("001", "010", "Avengers", "27/04/2012")
+# Sắp xếp theo tên phim (title)
+movie_list.sort_movies(key="title")
+print("\nSắp xếp theo tên phim:")
+movie_list.display_movie()
+
+# Sắp xếp theo điểm rating giảm dần
+movie_list.sort_movies(key="rating", reverse=True)
+print("\nSắp xếp theo điểm rating giảm dần:")
+movie_list.display_movie()
+
+# Sắp xếp theo ngày phát hành (release_date)
+movie_list.sort_movies(key="release_date")
+print("\nSắp xếp theo ngày phát hành:")
+movie_list.display_movie()
