@@ -61,7 +61,7 @@ class MovieList:
 movie_list = MovieList()
 movie1 = Movies("001", "Avengers", "27/04/2012", 8.0)
 movie2 = Movies("002", "Justice league", "17/11/2017", 6.0)
-movie3 = Movies("003", "Cô dâu 8 tuổi", "21/07/2018")
+movie3 = Movies("003", "Cô dâu 8 tuổi", "21/07/2008")
 movie4 = Movies("004", "Kungfu Panda", "27/06/2008", 7.6)
 print("\n-----------------------")
 print("DANH SÁCH PHIM BAN ĐẦU")
