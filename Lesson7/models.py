@@ -22,7 +22,6 @@ class Movies:
 class MovieList:
     def __init__(self):
         self.movie_list = []
-        self.save_to_json()
 
     # Thêm phim mới
     def add_movie(self, movie):
@@ -77,16 +76,21 @@ class MovieList:
         return Movies(data["id"], data["title"], data["release_date"], data["rating"], data["link"])
 
     def save_to_json(self):
-        with open("Lesson6/data.json", "w", encoding="utf-8") as file:
+        with open("Lesson7/data.json", "w", encoding="utf-8") as file:
             json.dump([movie.to_dict() for movie in self.movie_list], file, indent=4, ensure_ascii=False)
 
     def load_from_json(self):
-        with open("Lesson6/data.json", "r", encoding="utf-8") as file:
+        with open("Lesson7/data.json", "r", encoding="utf-8") as file:
             data = json.load(file) # lưu dữ liệu từ json vào biến data
             self.movie_list = [self.create_movie_from_dict(movie) for movie in data]
 
+    # Lấy ra danh sách tên các bộ phim
+    def get_title_list(self):
+        return [movie.title for movie in self.movie_list]
+
 # KIỂM THỬ
 movie_list = MovieList()
+
 
 movie1 = Movies("001", "Avengers", "27/04/2012", 8.0)
 movie2 = Movies("002", "Justice league", "17/11/2017", 6.0)
@@ -105,33 +109,33 @@ print("\n-----------------------")
 print("DANH SÁCH PHIM SAU KHI THÊM PHIM MỚI")
 movie_list.display_movie()
 
-# Xoá phim khỏi danh sách
-movie_list.remove_movie("Cô dâu 8 tuổi")
-print("\n-----------------------")
-print("DANH SÁCH PHIM SAU KHI XOÁ PHIM")
-movie_list.display_movie()
+# # Xoá phim khỏi danh sách
+# movie_list.remove_movie("Cô dâu 8 tuổi")
+# print("\n-----------------------")
+# print("DANH SÁCH PHIM SAU KHI XOÁ PHIM")
+# movie_list.display_movie()
 
-# Tìm kiếm phim
-result_movie = movie_list.search_movie("kungfu")
-print("\n-----------------------")
-print("DANH SÁCH PHIM SAU KHI TÌM KIẾM PHIM")
-for movie in result_movie:
-    print(movie.title)
+# # Tìm kiếm phim
+# result_movie = movie_list.search_movie("kungfu")
+# print("\n-----------------------")
+# print("DANH SÁCH PHIM SAU KHI TÌM KIẾM PHIM")
+# for movie in result_movie:
+#     print(movie.title)
 
-# Sắp xếp phim theo tên từ A -> Z
-movie_list.sort_movie(key = "title")
-print("\n-----------------------")
-print("DANH SÁCH PHIM SAU KHI SẮP XẾP PHIM THEO TÊN")
-movie_list.display_movie()
+# # Sắp xếp phim theo tên từ A -> Z
+# movie_list.sort_movie(key = "title")
+# print("\n-----------------------")
+# print("DANH SÁCH PHIM SAU KHI SẮP XẾP PHIM THEO TÊN")
+# movie_list.display_movie()
 
-# Sắp xếp phim theo điểm đánh giá
-movie_list.sort_movie(key = "rating")
-print("\n-----------------------")
-print("DANH SÁCH PHIM SAU KHI SẮP XẾP PHIM THEO ĐIỂM ĐÁNH GIÁ")
-movie_list.display_movie()
+# # Sắp xếp phim theo điểm đánh giá
+# movie_list.sort_movie(key = "rating")
+# print("\n-----------------------")
+# print("DANH SÁCH PHIM SAU KHI SẮP XẾP PHIM THEO ĐIỂM ĐÁNH GIÁ")
+# movie_list.display_movie()
 
-# Sắp xếp phim theo ngày phát hành
-movie_list.sort_movie(key = "release_date")
-print("\n-----------------------")
-print("DANH SÁCH PHIM SAU KHI SẮP XẾP PHIM THEO NGÀY PHÁT HÀNH")
-movie_list.display_movie()
+# # Sắp xếp phim theo ngày phát hành
+# movie_list.sort_movie(key = "release_date")
+# print("\n-----------------------")
+# print("DANH SÁCH PHIM SAU KHI SẮP XẾP PHIM THEO NGÀY PHÁT HÀNH")
+# movie_list.display_movie()
