@@ -1,9 +1,30 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QDialog
 import sys
 from PyQt6 import uic
 from PyQt6.QtCore import Qt
 from models import MovieList
 
+from PyQt6.QtCore import QDate
+from datetime import datetime
+
+class AddDialog(QDialog):
+    def __init__(self):
+        self.ui = uic.loadUi("Lesson8/add_dialog.ui", self)
+
+        # Format lại ngày tháng năm
+        self.ui.dateInput.setDisplayFormat("dd/MM/yyyy")
+
+    def return_input_fields(self) -> dict:
+        date_input = self.ui.dateInput.date().toPyDate()
+
+        # Trả dữ liệu về
+        return {
+            "id": self.ui.idInput.text(),
+            "title": self.ui.titleInput.text(),
+            "release_date": self.ui.date_input.strftime("%b %Y"),
+            "rating": float(self.ui.ratingInput.text() if self.ui.ratingInput.text() else None),
+            "link": self.ui.linkInput.text()
+        }
 
 class ListWidget(QMainWindow):
     def __init__(self):
