@@ -1,12 +1,5 @@
 [
     {
-        "id": "001",
-        "title": "Avengers",
-        "release_date": "27/04/2012",
-        "rating": 8.0,
-        "link": null
-    },
-    {
         "id": "002",
         "title": "Justice league",
         "release_date": "17/11/2017",

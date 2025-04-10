@@ -21,9 +21,22 @@ class ListWidget(QMainWindow):
         self.ui.listWidget.addItems(movie_title)
         self.ui.listWidget.setCurrentRow(0)
 
+        self.deleteButton.clicked.connect(self.delete)
     
+    def delete(self):
+        current_index = self.ui.listWidget.currentRow()
+        item = self.ui.listWidget.item(current_index)
+        item_title = item.text()
 
-    
+        # Tạo message box để confirm
+        if item is not None:
+            choice = QMessageBox.question(self, "Remove movie", 
+                                                "Do you want to remove this movie?", 
+                                                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+
+            if choice == QMessageBox.StandardButton.Yes:
+                item = self.ui.listWidget.takeItem(current_index) # Xoá phần tử trong list widget
+                self.database.remove_movie(item_title) # Xoá dữ liệu trong file json
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
