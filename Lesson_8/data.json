@@ -26,5 +26,12 @@
         "release_date": "03/09/2003",
         "rating": 0,
         "link": null
+    },
+    {
+        "id": "100",
+        "title": "Avengers",
+        "release_date": "dd/MM/yyyy",
+        "rating": 8.5,
+        "link": "abc"
     }
 ]
