@@ -1,10 +1,10 @@
 [
     {
         "id": 1,
-        "title": "Avengers: End game",
-        "release_date": "26/04/2019",
-        "rating": 8.4,
-        "link": null
+        "title": "Spider-man: Far from home",
+        "release_date": "02/07/2019",
+        "rating": 7.4,
+        "link": "https://www.imdb.com/title/tt6320628/"
     },
     {
         "id": 2,
@@ -26,12 +26,5 @@
         "release_date": "17/08/2007",
         "rating": 0,
         "link": null
-    },
-    {
-        "id": "007",
-        "title": "Điệp viên 007",
-        "release_date": "Jan 2000",
-        "rating": 7.0,
-        "link": "abc"
     }
 ]

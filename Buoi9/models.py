@@ -3,7 +3,7 @@ import json
 # Class Movies để khởi tạo các bộ phim
 class Movies:
     def __init__(self, id, title, release_date, rating = None, link = None):
-        self.id = id
+        self.id = int(id) if id else 0
         self.title = title
         self.release_date = release_date
         self.rating = float(rating) if rating else 0
@@ -17,6 +17,12 @@ class Movies:
             "rating" : self.rating,
             "link" : self.link
         }
+    
+    def update(self, new_title, new_release_date, new_rating = None, new_link = None):
+        self.title = new_title
+        self.release_date = new_release_date
+        self.rating = new_rating
+        self.link = new_link
 
 # Class MoviesList để quản lý danh sách phim
 class MoviesList:
@@ -36,12 +42,12 @@ class MoviesList:
         self.save_to_json()
 
     # Cập nhật phim
-    def update_movie(self, movie_id, new_id, new_title, new_release_date, new_rating = None, new_link = None):
+    def update_movie(self, movie_id, new_title, new_release_date, new_rating = None, new_link = None):
         for movie in self.movie_list:
             if movie.id == movie_id:
-                movie.update(new_id, new_title, new_release_date, new_rating, new_link)
+                movie.update(new_title, new_release_date, new_rating, new_link)
+                self.save_to_json()
                 return True
-        self.save_to_json()
         return False
 
     # Tìm kiếm phim bằng tên
@@ -92,57 +98,9 @@ class MoviesList:
     
     def get_movie_title_list(self):
         return [movie.title for movie in self.movie_list]
-
-movie_list = MoviesList()
-
-# Khởi tạo các đối tượng từ class Movies
-movie1 = Movies(1, "Avengers: End game", "26/04/2019", 8.4)
-movie2 = Movies(2, "Terrifier 3", "19/09/2024", 6.3)
-movie3 = Movies(3, "Kamen Rider Decade", "30/08/2009")
-movie4 = Movies(4, "Phinies and Ferb", "17/08/2007")
-
-print("\n-----------------")
-print("DANH SÁCH PHIM BAN ĐẦU")
-movie_list.display_movie()
-
-# Kết quả khi thêm phim mới
-print("\n-----------------")
-print("DANH SÁCH PHIM KHI THÊM PHIM MỚI")
-movie_list.add_movie(movie1)
-movie_list.add_movie(movie2)
-movie_list.add_movie(movie3)
-movie_list.add_movie(movie4)
-movie_list.display_movie()
-# movie_list.save_to_json()
-
-# # Kết quả khi xoá phim
-# print("\n-----------------")
-# print("DANH SÁCH PHIM KHI XOÁ PHIM")
-# movie_list.remove_movie("Terrifier 3")
-# movie_list.display_movie()
-# movie_list.save_to_json()
-
-# # Kết quả khi tìm kiếm phim
-# result_movie = movie_list.search_movie("kamen")
-# print("\n-----------------")
-# print("DANH SÁCH PHIM KHI TÌM KIẾM PHIM")
-# for movie in result_movie:
-#     print(movie.title)
-
-# # Sắp xếp phim theo tên
-# movie_list.sort_movie(key="title")
-# print("\n-----------------")
-# print("SẮP XẾP PHIM THEO TÊN")
-# movie_list.display_movie()
-
-# # Sắp xếp phim theo rating
-# movie_list.sort_movie(key="rating")
-# print("\n-----------------")
-# print("SẮP XẾP PHIM THEO RATING")
-# movie_list.display_movie()
-
-# # Sắp xếp phim theo ngày phát hành
-# movie_list.sort_movie(key="release_date")
-# print("\n-----------------")
-# print("SẮP XẾP PHIM THEO NGÀY PHÁT HÀNH")
-# movie_list.display_movie()
+    
+    def get_first_item_by_title(self, movie_title):
+        for movie in self.movie_list:
+            if movie.title == movie_title:
+                return movie
+            return False
