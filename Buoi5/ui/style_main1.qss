@@ -1,0 +1,119 @@
+/* Style for mainwindow START */
+    #MainWindow {
+        background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, 
+                                                stop:0 #f26419, 
+                                                stop:1 #000);
+    }
+
+    QWidget {
+        border: none;
+    }
+/* ==============END==========*/
+
+
+/* Style for header widget START */
+    #widget {
+        background-color: #f26419;;
+    }
+/* ==============END==========*/
+
+/* Style for menu with icon only START*/
+    /* for widget */
+    #leftMenu {
+        background-color: #fff;
+        width: 100px;
+    }
+    
+    /* style for QPushButton, QLabel */
+    #leftMenu .QToolButton, .QLabel {
+        height: 50px;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        color: #f26419;
+        padding: 8px;
+    }
+    
+    #leftMenu .QToolButton:checked {
+        background-color: #ffd1b8;
+        padding: 8px;
+    }
+
+/* ==============END==========*/
+    
+/* Ranking page Widget START */
+    #listWidget {
+        border-radius: 10%;
+    }
+
+/* CRUD START */
+    #CRUDMenu .QPushButton {
+        color: #f26419;
+        background-color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        border: none;
+        border-radius: 5%;
+        padding: 4px;
+    }
+
+    #CRUDMenu QLineEdit {
+        color: #000;
+        background-color: #fff;
+    }
+
+    #CRUDPage QListWidget{
+        color: #000;
+        border-bottom: 1px solid #fff;
+        background-color: #fff;
+    }
+
+/* ==============END==========*/
+
+/* Ranking page Widget START */
+    #rankMenu .QToolButton{
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        border: none;
+        padding: 4px;
+    }
+    
+    #rankMenu .QToolButton:checked {
+        color: #f26419;
+        background-color: #fff;
+        border-radius: 5%;
+    }
+
+    QScrollArea {
+        border: none;
+        background: transparent; 
+    } 
+    
+    QScrollArea > QWidget > QWidget{ 
+        background: transparent; 
+    } 
+
+    #scrollAnimeFrame QLabel:hover {
+        border-style: none;
+    }
+
+    #animeView QLabel:hover {
+        border:none;
+    }
+
+/* ==============END==========*/
+
+
+/* Home page Style START */
+    #homeFrame {
+        background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, 
+                                                stop:0 #f26419, 
+                                                stop:1 #000);
+    }
+
+    #homeText {
+        color: #fff;
+    }
+
+/* ==============END==========*/

@@ -18,6 +18,12 @@ class Movies:
             "rating" : self.rating,
             "link": self.link
         }
+    
+    def update(self, new_title, new_release_date, new_rating = None, new_link = None):
+        self.title = new_title
+        self.release_date = new_release_date
+        self.rating = new_rating
+        self.link = new_link
 
 # Lưu trữ class danh sách phim
 class MovieList:
@@ -35,21 +41,14 @@ class MovieList:
     def search_movie(self, title):
         return [movie for movie in self.movie_list if title.lower() in movie.title.lower()]
     
-    def update_movie(self, movie_id, new_id, new_title, new_release_date=None, new_rating=None, new_link=None):
+    def update_movie(self, movie_id, new_title, new_release_date, new_rating = None, new_link = None):
         for movie in self.movie_list:
             if movie.id == movie_id:
-                movie.id = new_id
-                movie.title = new_title
-                if new_release_date:
-                    movie.release_date = new_release_date
-                if new_rating:
-                    movie.rating = float(new_rating)
-                if new_link:
-                    movie.link = new_link
+                movie.update(new_title, new_release_date, new_rating, new_link)
+                self.save_to_json()
                 return True
-        self.save_to_json()
         return False
-    
+
     def display_movie(self):
         for movie in self.movie_list:
             print(f"{movie.id} - {movie.title} - {movie.release_date} - {movie.rating}")
@@ -69,31 +68,8 @@ class MovieList:
     def get_title_list(self):
         return [movie.title for movie in self.movie_list]
     
-
-# Tạo danh sách phim
-movie_list = MovieList()
-
-# Thêm phim vào danh sách
-movie1 = Movies("001", "Iron Man", "16/05/2008", 10)
-movie2 = Movies("002", "Black Panther", "16/02/2018", 8.4)
-movie3 = Movies("003", "Love Rosie", "24/10/2014", 7.8)
-movie4 = Movies("004", "Mật mã Lyoko", "03/09/2003")
-
-movie_list.add_movie(movie1)
-movie_list.add_movie(movie2)
-movie_list.add_movie(movie3)
-movie_list.add_movie(movie4)
-
-# print("\nXEM DANH SÁCH PHIM BAN ĐẦU")
-# movie_list.display_movie()
-
-# movie_list.remove_movie("Black Panther")
-# print("\nXEM DANH SÁCH PHIM SAU KHI XOÁ")
-# movie_list.display_movie()
-
-# result_movie = movie_list.search_movie("iron")
-# print("\nKẾT QUẢ TÌM KIẾM PHIM")
-# for movie in result_movie:
-#     print(movie.title)
-
-# movie_list.update_movie("001", "010", "Avengers", "27/04/2012")
+    def get_first_item_by_title(self, movie_title):
+        for movie in self.movie_list:
+            if movie.title == movie_title:
+                return movie
+            return False
