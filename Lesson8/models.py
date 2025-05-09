@@ -18,7 +18,7 @@ class Movies:
             "link" : self.link
         }
     
-    def update(self, new_title, new_rating, new_release_date = None, new_link = None):
+    def update(self, new_title, new_release_date,  new_rating= None, new_link = None):
         self.title = new_title
         self.release_date = new_release_date
         self.rating = new_rating
@@ -73,9 +73,9 @@ class MovieList:
         elif key == "release_date":
             self.movie_list.sort(key = self.get_release_date)
 
-    def display_movie(self):
-        for movie in self.movie_list:
-            print(f"{movie.id} - {movie.title} - {movie.release_date} - {movie.rating} - {movie.link}")
+    # def display_movie(self):
+    #     for movie in self.movie_list:
+    #         print(f"{movie.id} - {movie.title} - {movie.release_date} - {movie.rating} - {movie.link}")
 
     # Chuyển dữ liệu từ dictionary thành object
     def create_movie_from_dict(self, data):
